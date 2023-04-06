@@ -23,10 +23,9 @@ const getProductos = async () => {
           categorias.Categoria, 
           Round(precio,0), 
           Round(precio*1.19,1), 
-          insumos_venta.activo, 
+          insumos_venta.activo 
         HAVING 
-          (((ROUND(SUM(bodegas_movimientos.Entrada-bodegas_movimientos.Salida))>=0)))
-      `;
+          ROUND(SUM(bodegas_movimientos.Entrada-bodegas_movimientos.Salida))>=0`;
     try {
       const [productos] = await conexionDB.query(consulta);
       if(productos.length === 0) return 'No hay productos'
