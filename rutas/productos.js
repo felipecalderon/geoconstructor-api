@@ -4,33 +4,10 @@ const { getProductos } = require('../controladores/productos.control');
 ruta.get('/productos', async (req, res) => {
   try {
     const productos = await getProductos();
-    
-    if (productos.length > 0) {
-      const result = productos.map(producto => {
-        const { peso, PrecioIVA, codigo, Nombre, Categoria, PrecioNeto, Stock, activo } = producto;
-        const fijarStock = Stock < 0 ? Stock * -1 : Stock;
-        const Iva = peso ? peso : PrecioIVA;
-        const Oferta = peso ? PrecioIVA : '';
-  
-        return {
-          sku: codigo,
-          nombre: Nombre,
-          categoria: Categoria,
-          precioNeto: PrecioNeto,
-          precioIva: Iva,
-          precioOferta: Oferta,
-          stock: fijarStock,
-          activo: activo === 'S' ? 'visible' : 'hidden'
-        };
-      });
-  
-      res.json(result);
-    } else {
-      res.send('Not result');
-    }
+    res.json(productos);
   } catch (error) {
     console.log(error);
-    res.send('Error');
+    res.json(error);
   }
 })
 
