@@ -7,7 +7,7 @@ ruta.get('/productos', async (req, res) => {
     res.json(productos);
   } catch (error) {
     console.log(error);
-    res.json(error);
+    res.send(error);
   }
 })
 

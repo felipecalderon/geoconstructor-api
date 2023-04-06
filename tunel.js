@@ -7,7 +7,7 @@ const tunel = async () => {
           proto: "http",
           addr: process.env.PORT,
         });
-        console.log(`ngrok tunnel: ${url}`);
+        // console.log(`ngrok tunnel: ${url}`);
         return `Conectado en: <a href="${url}">Servidor Online</a>`
 
       } catch (error) {
