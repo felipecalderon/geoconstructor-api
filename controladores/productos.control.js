@@ -7,6 +7,7 @@ const getProductos = async () => {
           insumos_venta.codigo, 
           insumos_venta.Nombre, 
           insumos_venta.cod_barra, 
+          insumos_venta.peso, 
           categorias.Categoria, 
           Round(Sum(bodegas_movimientos.Entrada-bodegas_movimientos.Salida)) AS Stock, 
           Round(insumos_venta.precio,0) AS PrecioNeto, 
