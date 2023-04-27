@@ -29,6 +29,7 @@ const getProductos = async () => {
           ROUND(SUM(bodegas_movimientos.Entrada-bodegas_movimientos.Salida))>=0`;
     try {
       const [productos] = await conexionDB.query(consulta);
+      const OUTDOOR = "CALZADO OUTDOOR"
       if(productos.length === 0) return 'No hay productos'
       const cleanProductos = productos.map(producto => {
           const { peso, PrecioIVA, codigo, Nombre, Categoria, PrecioNeto, Stock, activo } = producto;
@@ -46,7 +47,8 @@ const getProductos = async () => {
               activo: activo === 'S' ? 'visible' : 'hidden'
             }
           })
-      return cleanProductos;
+      const productosFiltrados = cleanProductos.filter(producto => producto.categoria !== OUTDOOR)
+      return productosFiltrados;
     } catch (error) {
       throw error;
     } finally {
@@ -90,12 +92,13 @@ const getProductosVariables = async () => {
     const cleanProductos = productos.map(producto => {
         const { peso, PrecioIVA, codigo, Nombre, Categoria, PrecioNeto, Stock, activo } = producto;
         const talla = Nombre.match(regex)?.toString()?.trim()
+        const nombre = Nombre.replace(regex, '');
         const fijarStock = Stock < 0 ? Stock * -1 : Stock;
         const Iva = peso ? peso : PrecioIVA;
         const Oferta = peso ? PrecioIVA : '';
           return {
             sku: codigo,
-            nombre: Nombre,
+            nombre,
             categoria: Categoria,
             precioNeto: PrecioNeto,
             precioIva: Iva,
