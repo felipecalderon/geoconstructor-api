@@ -9,6 +9,7 @@
   "author": "felipe",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
     "dotenv": "*16.0.1",
     "express": "*4.18.1",
     "mysql2": "^3.2.0",
