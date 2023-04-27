@@ -15,7 +15,7 @@ si se cierra esta ventana, volver a abrir el archivo "Iniciar API" en el escrito
 
 Atte: Felipe`)
   try {    
-    // const openconect = await tunel()
+    const openconect = await tunel()
     console.log(openconect);
   } catch (error) {
     console.log(error.message);
