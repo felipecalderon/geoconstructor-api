@@ -74,7 +74,7 @@ const getProductosVariables = async () => {
         INNER JOIN insumos_venta ON bodegas_movimientos.codigo = insumos_venta.codigo 
         INNER JOIN categorias ON insumos_venta.categoria = categorias.id_categoria 
       WHERE
-        insumos_venta.categoria=152
+        insumos_venta.categoria IN (152, 154)
       GROUP BY 
         insumos_venta.codigo, 
         insumos_venta.Nombre, 
