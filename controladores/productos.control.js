@@ -30,6 +30,7 @@ const getProductos = async () => {
     try {
       const [productos] = await conexionDB.query(consulta);
       const OUTDOOR = "CALZADO OUTDOOR"
+      const TRAIL = "ZAPATILLA TRAIL"
       if(productos.length === 0) return 'No hay productos'
       const cleanProductos = productos.map(producto => {
           const { peso, PrecioIVA, codigo, Nombre, Categoria, PrecioNeto, Stock, activo } = producto;
@@ -47,7 +48,7 @@ const getProductos = async () => {
               activo: activo === 'S' ? 'visible' : 'hidden'
             }
           })
-      const productosFiltrados = cleanProductos.filter(producto => producto.categoria !== OUTDOOR)
+      const productosFiltrados = cleanProductos.filter(producto => producto.categoria !== OUTDOOR || producto.categoria !== TRAIL)
       return productosFiltrados;
     } catch (error) {
       throw error;
