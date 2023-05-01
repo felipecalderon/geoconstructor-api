@@ -17,6 +17,8 @@ const getProductos = async () => {
           bodegas_movimientos 
           INNER JOIN insumos_venta ON bodegas_movimientos.codigo = insumos_venta.codigo 
           INNER JOIN categorias ON insumos_venta.categoria = categorias.id_categoria 
+        WHERE
+          insumos_venta.categoria NOT IN (152, 154)
         GROUP BY 
           insumos_venta.codigo, 
           insumos_venta.Nombre, 
@@ -48,8 +50,7 @@ const getProductos = async () => {
               activo: activo === 'S' ? 'visible' : 'hidden'
             }
           })
-      const productosFiltrados = cleanProductos.filter(producto => producto.categoria !== OUTDOOR || producto.categoria !== TRAIL)
-      return productosFiltrados;
+      return cleanProductos;
     } catch (error) {
       throw error;
     } finally {
