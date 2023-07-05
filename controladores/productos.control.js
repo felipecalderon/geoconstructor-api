@@ -47,7 +47,7 @@ const getProductos = async () => {
               precioIva: Iva,
               precioOferta: Oferta,
               stock: fijarStock,
-              activo: activo === 'S' ? 'visible' : 'hidden'
+              activo: activo === 'S' ? 'visible' : 'oculto'
             }
           })
       return cleanProductos;
