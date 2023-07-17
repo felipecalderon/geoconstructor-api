@@ -34,7 +34,7 @@ const getProductos = async () => {
       if(productos.length === 0) return 'No hay productos'
       const cleanProductos = productos.map(producto => {
           const { peso, PrecioIVA, codigo, Nombre, Categoria, PrecioNeto, Stock, activo } = producto;
-          const fijarStock = Stock < 0 ? Stock * -1 : Stock;
+          const fijarStock = Stock < 0 ? 0 : Stock;
           const Iva = peso ? peso : PrecioIVA;
           const Oferta = peso ? PrecioIVA : '';
             return {
