@@ -1,6 +1,6 @@
 const ruta = require('express').Router();
 const { getProductos } = require('../controladores/productos.control');
-
+ruta.get('/', (req, res) => res.send('Bienvenido a la API de GEOCONSTRUCTOR!'))
 ruta.get('/productos', async (req, res) => {
   try {
     const productos = await getProductos();

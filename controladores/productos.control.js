@@ -1,5 +1,5 @@
 const pool = require('../database')
-
+const { capitalizeString } = require('../utils/capitalizar')
 const getProductos = async () => {
     const conexionDB = await pool.getConnection();
     const consulta = `
@@ -39,12 +39,12 @@ const getProductos = async () => {
           const Oferta = peso ? PrecioIVA : '';
             return {
               sku: codigo,
-              nombre: Nombre,
+              nombre: capitalizeString(Nombre),
               categoria: Categoria,
               precioNeto: PrecioNeto,
               precioIva: Iva,
               precioOferta: Oferta,
-              stock: fijarStock,
+              stock: Stock,
               activo: activo === 'S' ? 'publish' : 'draft'
             }
           })
