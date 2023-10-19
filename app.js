@@ -3,7 +3,9 @@ const express = require('express');
 const app = express();
 const {tunel} = require('./tunel')
 const cors = require('cors')
+const morgan = require('morgan')
 app.use(express.json());
+
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({
@@ -11,6 +13,7 @@ app.use(cors({
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 }));
+app.use(morgan('dev'))
 app.use("/", require("./rutas/productos"))
 app.use("/", require("./rutas/variables"))
 
