@@ -1,5 +1,5 @@
 const ruta = require('express').Router();
-const { verMovimientosBodega, getProductosConBodega} = require('../controladores/movimientos');
+const { verMovimientosBodega, ventasProductos} = require('../controladores/movimientos');
 const { getProductos } = require('../controladores/productos.control');
 ruta.get('/', (req, res) => res.json('Bienvenido a la API de GEOCONSTRUCTOR!'))
 ruta.get('/productos', async (req, res) => {
@@ -23,10 +23,10 @@ ruta.get('/productos/:codigoProducto', async (req, res) => {
   }
 })
 
-ruta.get('/productosdetalle', async (req, res) => {
+ruta.get('/ventas', async (req, res) => {
   try {
-    const productos = await getProductosConBodega()
-    res.json(productos);
+    const movimientos = await ventasProductos()
+    res.json(movimientos);
   } catch (error) {
     console.log(error);
     res.json(error);
