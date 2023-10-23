@@ -18,7 +18,11 @@ const verMovimientosBodega = async (codigoProducto) => {
 
 const ventasProductos = async () => {
     const conexionDB = await pool.getConnection();
-    const consulta = `SELECT * FROM stna_gestion.bodegas_movimientos;`;
+    const consulta = `
+        SELECT *
+        FROM stna_gestion.bodegas_movimientos
+        ORDER BY Fecha DESC
+        LIMIT 4000`;
     try {
       const [productos] = await conexionDB.query(consulta);
       return productos
