@@ -21,7 +21,7 @@ const ventasProductos = async () => {
     const consulta = `
         SELECT *
         FROM stna_gestion.bodegas_movimientos
-        ORDER BY Fecha DESC
+        ORDER BY Numero_Transaccion DESC
         LIMIT 4000`;
     try {
       const [productos] = await conexionDB.query(consulta);

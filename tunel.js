@@ -14,11 +14,11 @@ sgMail.setApiKey(process.env.APIMAIL)
 
 const tunel = async () => {
     try {
-
       const url = await ngrok.connect({
         authtoken: process.env.NGROK,
         proto: "http",
         addr: process.env.PORT,
+        hostname: 'cunning-stingray-trusty.ngrok-free.app',
       });
       const msg = {
         to: 'admin@geobosques.com', // Change to your recipient
@@ -31,6 +31,7 @@ const tunel = async () => {
       return `Conectado en: ${url}`
 
       } catch (error) {
+        console.error('falló ngrok', error)
         throw new Error('Falló la conexión Ngrok')
       }
 }

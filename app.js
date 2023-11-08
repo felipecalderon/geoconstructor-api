@@ -3,17 +3,20 @@ const express = require('express');
 const app = express();
 const {tunel} = require('./tunel')
 const cors = require('cors')
+const fs = require('fs');
 const morgan = require('morgan')
+const path = require('path');
 app.use(express.json());
 
 const PORT = process.env.PORT || 3001;
-
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'temp.log'), { flags: 'a' });
+console.log({path: path.join(__dirname,'app.js')})
 app.use(cors({
   origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 }));
-app.use(morgan('dev'))
+app.use(morgan('combined', { stream: accessLogStream }))
 app.use("/", require("./rutas/productos"))
 app.use("/", require("./rutas/variables"))
 

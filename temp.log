@@ -1,0 +1,5 @@
+::1 - - [08/Nov/2023:15:18:12 +0000] "GET / HTTP/1.1" 200 40 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/119.0"
+::1 - - [08/Nov/2023:15:18:22 +0000] "GET / HTTP/1.1" 200 40 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/119.0"
+::1 - - [08/Nov/2023:15:19:14 +0000] "GET /productos HTTP/1.1" 200 970500 "-" "-"
+::1 - - [08/Nov/2023:15:19:15 +0000] "GET /productos HTTP/1.1" 200 970500 "-" "-"
+::1 - - [08/Nov/2023:15:19:17 +0000] "GET /productos HTTP/1.1" 200 970500 "-" "WordPress/6.4; https://www.geoconstructor.cl"
