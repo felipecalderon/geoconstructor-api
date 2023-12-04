@@ -15,14 +15,24 @@ const verMovimientosBodega = async (codigoProducto) => {
         conexionDB.release();
     }
 }
-
-const ventasProductos = async () => {
+const formatoFecha = (fecha) => {
+    const dia = fecha.getUTCDate().toString().padStart(2, '0'); 
+    const mes = (fecha.getUTCMonth() + 1).toString().padStart(2, '0'); 
+    const ano = fecha.getUTCFullYear(); 
+    return `${ano}-${mes}-${dia}`
+}
+const ventasProductos = async (fechaDesde, fechaHasta) => {
+    const desde = !fechaDesde ? formatoFecha(new Date()) : fechaDesde
+    const hasta = !fechaHasta ? formatoFecha(new Date()) : fechaHasta
+    console.log({desde, hasta})
     const conexionDB = await pool.getConnection();
     const consulta = `
         SELECT *
         FROM stna_gestion.bodegas_movimientos
+        JOIN stna_gestion.insumos_venta ON bodegas_movimientos.codigo = insumos_venta.codigo
+        WHERE bodegas_movimientos.Fecha >= "${desde}" AND bodegas_movimientos.Fecha <= "${hasta}"
         ORDER BY Numero_Transaccion DESC
-        LIMIT 4000`;
+    `;
     try {
       const [productos] = await conexionDB.query(consulta);
       return productos

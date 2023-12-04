@@ -25,7 +25,8 @@ ruta.get('/productos/:codigoProducto', async (req, res) => {
 
 ruta.get('/ventas', async (req, res) => {
   try {
-    const movimientos = await ventasProductos()
+    const {fechaDesde, fechaHasta} = req.query
+    const movimientos = await ventasProductos(fechaDesde, fechaHasta)
     res.json(movimientos);
   } catch (error) {
     console.log(error);
