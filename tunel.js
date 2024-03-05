@@ -18,7 +18,7 @@ const tunel = async () => {
         authtoken: process.env.NGROK,
         proto: "http",
         addr: process.env.PORT,
-        hostname: 'cunning-stingray-trusty.ngrok-free.app',
+        hostname: process.env.HOSTNAME,
       });
       const msg = {
         to: 'admin@geobosques.com', // Change to your recipient
