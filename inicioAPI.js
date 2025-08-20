@@ -1,10 +1,10 @@
 var Service = require('node-windows').Service;
 
-// Crea un nuevo objeto de servicio
 var svc = new Service({
-  name: 'API Geoconstructor',    // Nombre del servicio
+  name: 'API Geoconstructor',
   description: 'Conectando sistema con página web',
-  script: 'C:\\Users\\Admin\\Desktop\\api\\app.js' // Ruta a tu script principal de Node.js
+  script: 'C:\\Users\\Server\\Desktop\\api\\app.js',
+  cwd: 'C:\\Users\\Server\\Desktop\\api'
 });
 
 svc.on('install', function() {

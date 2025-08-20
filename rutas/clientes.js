@@ -5,7 +5,6 @@ ruta.get('/', (req, res) => {
   const  consultasis = 'SELECT * from clientes_proveedores';
   connection.query(consultasis, (error, resultado) => {
     if (error) throw error;
-    if (resultado.length > 0) {
     const clientes = resultado.map((cliente) => {
         let telefono = null
         if(cliente.fono) telefono = cliente.fono
@@ -20,10 +19,6 @@ ruta.get('/', (req, res) => {
             }
       }).filter(cliente => cliente !== undefined);
       res.json(clientes)
-    } 
-    else {
-      res.send('No se encontraron clientes');
-      }
   });
 });
 

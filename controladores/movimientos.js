@@ -48,7 +48,6 @@ const ventasProductos = async (fechaDesde, fechaHasta) => {
     const fechaUTC = new Date(Date.UTC(ahora.getUTCFullYear(), ahora.getUTCMonth(), ahora.getUTCDate(), ahora.getUTCHours() - 3));
     const desde = !fechaDesde ? formatoFecha(fechaUTC) : fechaDesde
     const hasta = !fechaHasta ? formatoFecha(fechaUTC) : fechaHasta
-    // console.log({desde, hasta})
     const conexionDB = await pool.getConnection();
     const consulta = `
         SELECT *

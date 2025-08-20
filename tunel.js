@@ -1,16 +1,7 @@
-const ngrok = require('ngrok');
+const ngrok = require('@ngrok/ngrok');
 const sgMail = require('@sendgrid/mail')
 const {fecha} = require('./generafecha')
 sgMail.setApiKey(process.env.APIMAIL)
-
-// sgMail
-//   .send(msg)
-//   .then(() => {
-//     console.log('Email sent')
-//   })
-//   .catch((error) => {
-//     console.error(error.response.body)
-//   })
 
 const tunel = async () => {
     try {
@@ -21,14 +12,14 @@ const tunel = async () => {
         hostname: process.env.HOSTNAME,
       });
       const msg = {
-        to: 'admin@geobosques.com', // Change to your recipient
-        from: 'ventas@geoconstructor.cl', // Change to your verified sender
+        to: 'admin@geobosques.com',
+        from: 'ventas@geoconstructor.cl',
         subject: 'API reiniciada, nuevo link ' + fecha,
         text: 'Información de la API',
-        html: `<a href="${url}">Clic aquí para ver link en la nube</a>`,
+        html: `<a href="${url.url()}">Clic aquí para ver link en la nube</a>`,
       }
-      const notificacion = await sgMail.send(msg)
-      return `Conectado en: ${url}`
+      await sgMail.send(msg)
+      return `Conectado en: ${url.url()}`
 
       } catch (error) {
         console.error('falló ngrok', error)

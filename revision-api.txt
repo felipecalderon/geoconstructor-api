@@ -1,0 +1,22 @@
+1: Verificación de versión NGROK.
+Versión instalada: "ngrok": 5.0.0-beta.2
+
+2: Documentacion oficial.
+https://ngrok.com/downloads/node-js
+Librería: "@ngrok/ngrok"
+
+3: Ajuste de la librería NGROK.
+Versión instalada: "@ngrok/ngrok": "^1.4.1"
+Versión desinstalada: "ngrok": 5.0.0-beta.2
+
+
+4: Reporte final:
+Resumen: Librería "ngrok" está deprecada (obsoleta), actualmente según la documentación oficial 
+se usa "@ngrok/ngrok" (se parecen pero son diferentes), quedó instalada la nueva librería
+y borrada la antigua, pero se debe ajustar el código para que sea compatible con la nueva.
+
+Tarea: Para dejar la API funcionando se debe instalar: Visual Studio Code (https://code.visualstudio.com)
+
+Acciones: Hay que programar el ajuste en el código fuente (carpeta controladores y utils en api)
+Tiempo de ajuste: De 2 a 4 horas, debe hacerse de forma remota con anydesk en el presente equipo.
+Costo: $80.000

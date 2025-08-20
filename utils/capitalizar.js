@@ -1,5 +1,4 @@
 exports.capitalizeString = (input) => {
-    // Definimos una lista de palabras que deben permanecer en minúsculas.
     const lowerCaseWords = ["de", "el", "la", "los", "las", "un", "una", "unos", "unas", "al", "del", "con", "sin", "para", "por", "en", "entre", "hacia", "hasta", "sobre", "tras", "m", "cm", "kg", "cc", "mm", "l", "g", "u", "x", "mt", "xl", "xxl"];
 
     // Convertimos el string de entrada en un array de palabras.
